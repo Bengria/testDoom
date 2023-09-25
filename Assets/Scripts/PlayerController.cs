@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float forwardForse = 1000;
-    [SerializeField] float sideForse = 1000;
+    [SerializeField] float forwardForce = 1000;
+    [SerializeField] float sideForce = 1000;
     Rigidbody rb;
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        rb.AddForce(new Vector3(horizontal * Time.fixedDeltaTime * forwardForse, 0, vertical * Time.fixedDeltaTime * sideForse));
+        rb.AddForce(new Vector3(horizontal * Time.fixedDeltaTime * forwardForce, 0, vertical * Time.fixedDeltaTime * sideForce));
 
         
     }
