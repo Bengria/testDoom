@@ -6,7 +6,7 @@ public class HealingComponent : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.GetComponent<Hilingable>().Heal(gameObject);
+        collision.gameObject.GetComponent<IHealable>().Heal(gameObject);
     }
     
     
