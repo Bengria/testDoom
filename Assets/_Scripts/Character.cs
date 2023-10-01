@@ -5,5 +5,6 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] private int hp = 100;
+    public int Hp => hp;
 
 }

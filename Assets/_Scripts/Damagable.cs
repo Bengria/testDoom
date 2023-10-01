@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour
 {
-    [SerializeField] private int hp = 100;
-
     private bool isDead;
     private int currentHp;
 
     private void Start()
     {
-        currentHp = hp;
+        currentHp = gameObject.GetComponent<Character>().Hp;
     }
 
     public bool IsDead => isDead;
@@ -45,15 +43,4 @@ public class Damagable : MonoBehaviour
         Debug.Log($"{gameObject.name} is dead");
     }
 
-    public void Heal(GameObject hilca)
-    {
-        if (hp < 100)
-            Destroy(hilca);
-
-        if (hp <= 80 & IsAlive) 
-            hp += 20;
-
-        if (hp > 80) 
-            hp = 100;
-    }
 }
