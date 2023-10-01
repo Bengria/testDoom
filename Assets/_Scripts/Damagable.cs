@@ -5,7 +5,7 @@ using UnityEngine;
 public class Damagable : MonoBehaviour
 {
     private bool isDead;
-    private int currentHp;
+    protected int currentHp;
 
     private void Start()
     {
