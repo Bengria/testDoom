@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damagable : MonoBehaviour
+public abstract class Damagable : MonoBehaviour
 {
-    [SerializeField] private int hp;
-    private bool isDead;
+    [SerializeField] protected int hp;
+    protected bool isDead;
     protected int currentHp;
 
     private void Start()
@@ -34,12 +34,12 @@ public class Damagable : MonoBehaviour
         }
     }
 
-    public void DealDamage(int damageAmount)
+    public virtual void DealDamage(int damageAmount)
     {
 
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         Debug.Log($"{gameObject.name} is dead");
     }

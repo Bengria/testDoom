@@ -2,17 +2,25 @@ using UnityEngine;
 
 public class Player : Damagable, IHealable
 {
-    [SerializeField] private int maxHp = 100;
+    public override void DealDamage(int damageAmount)
+    {
+        currentHp -= damageAmount;
+        if (currentHp <= 0 )
+        {
+            currentHp = 0;
+            Die();
+        }
+    }
 
     public void Heal(GameObject hilca)
     {
-        if (currentHp < maxHp)
+        if (currentHp < hp)
             Destroy(hilca);
 
-        if (currentHp <= maxHp - 20 & currentHp > 0)
+        if (currentHp <= hp - 20 & currentHp > 0)
             currentHp += 20;
 
-        if (currentHp > maxHp - 20)
+        if (currentHp > hp - 20)
             currentHp = 100;
     }
 }
