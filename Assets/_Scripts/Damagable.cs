@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour
 {
+    [SerializeField] private int hp;
     private bool isDead;
     protected int currentHp;
 
     private void Start()
     {
-        currentHp = gameObject.GetComponent<Character>().Hp;
+        currentHp = hp;
     }
 
     public bool IsDead => isDead;
