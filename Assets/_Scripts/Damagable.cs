@@ -45,9 +45,15 @@ public class Damagable : MonoBehaviour
         Debug.Log($"{gameObject.name} is dead");
     }
 
-    public void Heal()
+    public void Heal(GameObject hilca)
     {
+        if (hp < 100)
+            Destroy(hilca);
 
-        
+        if (hp <= 80 & IsAlive) 
+            hp += 20;
+
+        if (hp > 80) 
+            hp = 100;
     }
 }
