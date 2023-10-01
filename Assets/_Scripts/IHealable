@@ -1,3 +1,0 @@
-public interface IHealable {
-  void Heal(GameObject hilca);
-}

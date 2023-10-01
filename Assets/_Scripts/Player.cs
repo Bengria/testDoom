@@ -10,9 +10,9 @@ public class Player : Damagable, IHealable
             Destroy(hilca);
 
         if (currentHp <= maxHp - 20 & currentHp > 0)
-            hp += 20;
+            currentHp += 20;
 
         if (currentHp > maxHp - 20)
-            hp = 100;
+            currentHp = 100;
     }
 }
