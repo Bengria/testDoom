@@ -1,15 +1,7 @@
 using UnityEngine;
 
-public class Player : Damagable, IHealable
-{
-    protected override void OnEnable()
-    {
-        
-    }
-    protected override void OnDisable()
-    {
-        
-    }
+public class Player : Damagable
+{ 
     public override void DealDamage(int damageAmount)
     {
         currentHp -= damageAmount;
@@ -20,7 +12,7 @@ public class Player : Damagable, IHealable
         }
     }
 
-    public void Heal(GameObject hilca)
+    public override void Heal(GameObject hilca)
     {
         if (currentHp < hp)
             Destroy(hilca);

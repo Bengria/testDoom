@@ -34,16 +34,6 @@ public abstract class Damagable : MonoBehaviour
         }
     }
 
-    protected virtual void OnEnable()
-    {
-        EnemyManager.RegisterEnemy(this);
-    }
-
-    protected virtual void OnDisable()
-    {
-        EnemyManager.UnregisterEnemy(this);
-    }
-
     public virtual void DealDamage(int damageAmount)
     {
 
@@ -52,6 +42,11 @@ public abstract class Damagable : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log($"{gameObject.name} is dead");
+    }
+
+    public virtual void Heal(GameObject hilca)
+    {
+
     }
 
 }

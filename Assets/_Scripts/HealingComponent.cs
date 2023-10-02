@@ -6,8 +6,6 @@ public class HealingComponent : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collider)
     {
-        collider.gameObject.GetComponent<IHealable>().Heal(gameObject);
+        collider.gameObject.GetComponent<Damagable>().Heal(gameObject);
     }
-    
-    
 }
