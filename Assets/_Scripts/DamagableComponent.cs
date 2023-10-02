@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Damagable : MonoBehaviour
+public class DamagableComponent : MonoBehaviour
 {
     [SerializeField] protected int hp;
     protected bool isDead;
@@ -32,16 +32,6 @@ public abstract class Damagable : MonoBehaviour
                 Die();
             }
         }
-    }
-
-    protected virtual void OnEnable()
-    {
-        EnemyManager.RegisterEnemy(this);
-    }
-
-    protected virtual void OnDisable()
-    {
-        EnemyManager.UnregisterEnemy(this);
     }
 
     public virtual void DealDamage(int damageAmount)

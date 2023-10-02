@@ -8,9 +8,9 @@ public class Lava : MonoBehaviour
     private int oneSecond = 1;
     private Player player;
     private bool canDealDamage;
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.collider.gameObject.TryGetComponent(out Player _player))
+        if (collider.gameObject.TryGetComponent(out Player _player))
         {
             player = _player;
             canDealDamage = true;
@@ -18,7 +18,7 @@ public class Lava : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collider)
     {
         canDealDamage = false;
     }

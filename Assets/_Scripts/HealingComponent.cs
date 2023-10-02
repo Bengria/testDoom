@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HealingComponent : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        collision.gameObject.GetComponent<IHealable>().Heal(gameObject);
+        collider.gameObject.GetComponent<IHealable>().Heal(gameObject);
     }
     
     

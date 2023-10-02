@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class Player : Damagable, IHealable
 {
+    protected override void OnEnable()
+    {
+        
+    }
+    protected override void OnDisable()
+    {
+        
+    }
     public override void DealDamage(int damageAmount)
     {
         currentHp -= damageAmount;
