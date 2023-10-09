@@ -2,17 +2,17 @@ using System.Collections.Generic;
 
 public static class EnemyManager 
 {
-    static HashSet<Damagable> damagables = new HashSet<Damagable>();
+    static HashSet<Shootable> shootables = new HashSet<Shootable>();
 
-    public static IReadOnlyCollection<Damagable> Enimies => damagables;
+    public static IReadOnlyCollection<Shootable> Enimies => shootables;
 
-    public static void RegisterEnemy(Damagable damagable)
+    public static void RegisterEnemy(Shootable shootable)
     {
-        damagables.Add(damagable);
+        shootables.Add(shootable);
     }
 
-    public static void UnregisterEnemy(Damagable damagable)
+    public static void UnregisterEnemy(Shootable shootable)
     {
-        damagables.Remove(damagable);
+        shootables.Remove(shootable);
     }
 }
