@@ -15,12 +15,13 @@ public class PlayerShoot : MonoBehaviour
 
             float angle = Mathf.Acos(Vector3.Dot(transform.forward, enemyDirection)) * Mathf.Rad2Deg;
 
-            aim.CanShoot = angle < 3;
+            if (angle < 3)
+            {
+                aim.CanShoot = angle < 3;
+                return;
+            }
         }
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit) && hit.collider.TryGetComponent(out Shootable shootable))
-        {
-            Debug.Log("Shoot");
 
-        }
+        aim.CanShoot = false;
     }
 }

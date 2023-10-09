@@ -698,6 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 682813144}
+  - component: {fileID: 682813145}
   m_Layer: 5
   m_Name: Aim
   m_TagString: Untagged
@@ -727,6 +728,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &682813145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682813143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11feab62e277a094194e7f940f482eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimImage: {fileID: 197826078}
+  aimImage2: {fileID: 985900795}
 --- !u!1 &761920304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2157,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1060198616667484023, guid: 71c7fbfccc016514fa46b6e0f130c5a4, type: 3}
+      propertyPath: aim
+      value: 
+      objectReference: {fileID: 682813145}
     - target: {fileID: 2651588613120421969, guid: 71c7fbfccc016514fa46b6e0f130c5a4, type: 3}
       propertyPath: m_Name
       value: Player
