@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamagableComponent : MonoBehaviour
+public abstract class Damagable : MonoBehaviour
 {
-    [SerializeField] protected int hp;
+    [SerializeField] protected int maxHP;
     protected bool isDead;
     protected int currentHp;
 
     private void Start()
     {
-        currentHp = hp;
+        currentHp = maxHP;
     }
 
     public bool IsDead => isDead;
@@ -43,5 +43,8 @@ public class DamagableComponent : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} is dead");
     }
+    public virtual void Heal(int amount)
+    {
 
+    }
 }
