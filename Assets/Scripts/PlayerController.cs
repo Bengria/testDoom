@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         velocity.y += verticalSpeed;
 
         characterController.Move(velocity * Time.deltaTime);
+       
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -47,4 +48,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawLine(hit.point, hit.point + surfaceNormal * 3, Color.red);
     }
+
+
+
 }
