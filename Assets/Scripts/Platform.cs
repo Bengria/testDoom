@@ -11,14 +11,13 @@ public class Platform : MonoBehaviour
 
     bool isPositionStateOnPlatform = false;
     bool isStart = true;
-    GameObject playerr;
 
     private void Start()
     {
         startPositionPlatform = gameObject.transform.position;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isPositionStateOnPlatform)
         {
@@ -34,23 +33,24 @@ public class Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent(out Player player))
+        if (collider.TryGetComponent(out PlayerController player))
         {
-            playerr = collider.gameObject;
-
+            player.OnMovingWithPlatform(gameObject);
             isPositionStateOnPlatform = true;
             if (gameObject.transform.position == startPositionPlatform) isStart = true;
             if (gameObject.transform.position == endPositionPlatform) isStart = false;
         }
-
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out PlayerController player))
+        {
+            player.OnMovingWithPlatform(null);
+        }
     }
     private void MovingPlatform(Vector3 positionEnd)
     {
-        Vector3 posPersY = new Vector3(0, 0, 0);
-        posPersY.y = playerr.transform.position.y - transform.position.y;
-        playerr.transform.position = transform.position + posPersY;
-
-        transform.position = Vector3.MoveTowards(transform.position, positionEnd, speed * Time.deltaTime);
-        
+        transform.position = Vector3.MoveTowards(transform.position, positionEnd, speed * Time.deltaTime);   
     }
+ 
 }

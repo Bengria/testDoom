@@ -49,6 +49,12 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(hit.point, hit.point + surfaceNormal * 3, Color.red);
     }
 
+    public void OnMovingWithPlatform(GameObject platform)
+    {
+       if(platform!= null) transform.parent = platform.transform;
+       else transform.parent = null;
+    }
+
 
 
 }
