@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] Vector3 startPositionPlatform;
-    [SerializeField] Vector3 endPositionPlatform;
-    [SerializeField] float speed = 10;
+    [SerializeField] private Vector3 endPositionPlatform;
+    [SerializeField] private float speed = 10;
 
-    bool isPositionStateOnPlatform = false;
-    bool isStart = true;
+    private Vector3 startPositionPlatform;
+    private bool isPositionStateOnPlatform = false;
+    private bool isStart = true;
 
     private void Start()
     {
@@ -30,7 +27,6 @@ public class Platform : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent(out PlayerController player))
@@ -48,9 +44,10 @@ public class Platform : MonoBehaviour
             player.OnMovingWithPlatform(null);
         }
     }
+
     private void MovingPlatform(Vector3 positionEnd)
     {
-        transform.position = Vector3.MoveTowards(transform.position, positionEnd, speed * Time.deltaTime);   
+        transform.position = Vector3.MoveTowards(transform.position, positionEnd, speed * Time.fixedDeltaTime);   
     }
  
 }

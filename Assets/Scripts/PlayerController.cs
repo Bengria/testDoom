@@ -10,6 +10,24 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController characterController;
     private float verticalSpeed;
+    private GameObject floor;
+
+    public GameObject Floor
+    {
+        get => floor;
+        set
+        {
+            if (floor != value)
+            {
+                if (floor != null)
+                    floor.SendMessage("OnCharacterExit", this, SendMessageOptions.DontRequireReceiver);
+                if (value != null)
+                    value.SendMessage("OnCharacterEnter", this, SendMessageOptions.DontRequireReceiver);
+            }
+
+            floor = value;
+        }
+    }
 
     private void Awake()
     {
@@ -25,7 +43,7 @@ public class PlayerController : MonoBehaviour
             verticalSpeed = -0.1f;
         else
             verticalSpeed += Physics.gravity.y * Time.deltaTime;
-        
+
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         input = Vector3.ClampMagnitude(input, 1);
 
@@ -39,7 +57,9 @@ public class PlayerController : MonoBehaviour
         velocity.y += verticalSpeed;
 
         characterController.Move(velocity * Time.deltaTime);
-       
+
+
+        GroundCheck();
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -51,10 +71,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovingWithPlatform(GameObject platform)
     {
-       if(platform!= null) transform.parent = platform.transform;
-       else transform.parent = null;
+        if (platform != null) transform.parent = platform.transform;
+        else transform.parent = null;
     }
 
-
-
+    private void GroundCheck()
+    {
+        if (Physics.Linecast(transform.position,
+            transform.position + Vector3.down * (characterController.height / 2 + 0.1f),
+            out RaycastHit hit))
+        {
+            Floor = hit.collider.gameObject;
+            Floor.SendMessage("OnCharacterStay", this, SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Floor = null;
+        }
+    }
 }
