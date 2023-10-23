@@ -17,7 +17,7 @@ public class PlayerController : BaseCharacterController
     private void Update()
     {
         Rotate(Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime);
-        MoveLocal(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+        MoveLocal(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
 }

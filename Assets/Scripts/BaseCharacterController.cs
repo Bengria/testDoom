@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseCharacterController : MonoBehaviour
+
+[RequireComponent(typeof(CharacterController))]
+public abstract  class BaseCharacterController : MonoBehaviour
 {
     [SerializeField] private float speed;
 
@@ -49,7 +51,7 @@ public class BaseCharacterController : MonoBehaviour
         else
             verticalSpeed += Physics.gravity.y * Time.deltaTime;
 
-        Vector3 input = new Vector3(right, 0, forward);
+        Vector3 input = new Vector3(forward, 0, right);
         input = Vector3.ClampMagnitude(input, 1);
 
         Vector3 velocity = transform.TransformDirection(input) * speed;
@@ -69,7 +71,7 @@ public class BaseCharacterController : MonoBehaviour
     protected void MoveWorld(float x, float z)
     {
         Vector3 ditection = transform.InverseTransformDirection(new Vector3(x, 0, z));
-        MoveLocal(ditection.x, ditection.y);
+        MoveLocal(ditection.x, ditection.z);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
