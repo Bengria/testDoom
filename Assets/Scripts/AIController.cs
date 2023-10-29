@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Experimental.AI;
 
 public class AIController : BaseCharacterController
 {
-    bool isMoveToComplited = true;
-    int pathPointIndex;
-    NavMeshPath path;
+    private bool isMoveToCompleted = true;
+    private int pathPointIndex;
+    private NavMeshPath path;
 
     protected override void Awake()
     {
@@ -16,15 +13,15 @@ public class AIController : BaseCharacterController
 
         path = new NavMeshPath();
     }
+
     protected bool MoveTo(Vector3 targetPos)
     {
-
         bool hasPath = NavMesh.CalculatePath(transform.position, targetPos, NavMesh.AllAreas, path);
         if (hasPath) pathPointIndex = 1;
-        isMoveToComplited = !hasPath;
+        isMoveToCompleted = !hasPath;
         return hasPath;
-
     }
+
     protected virtual void Update()
     {
         if (path.status != NavMeshPathStatus.PathInvalid)
@@ -34,7 +31,8 @@ public class AIController : BaseCharacterController
                 Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
             }
         }
-        if(isMoveToComplited) return;
+
+        if(isMoveToCompleted) return;
 
         Vector3 targetPos = path.corners[pathPointIndex];
         Vector3 sourcePos = transform.position;
@@ -47,7 +45,7 @@ public class AIController : BaseCharacterController
             if(pathPointIndex +1 >= path.corners.Length)
             {
                 print("done");
-                isMoveToComplited = true;
+                isMoveToCompleted = true;
                 return;
 
             }
@@ -58,6 +56,4 @@ public class AIController : BaseCharacterController
         Vector3 direction = (targetPos - sourcePos).normalized;
         MoveWorld(direction.x, direction.z);
     }
-
-
 }

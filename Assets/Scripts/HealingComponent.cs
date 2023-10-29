@@ -10,13 +10,15 @@ public class HealingComponent : MonoBehaviour
     {
         if (collider.TryGetComponent(out Player player))
         {
-            player.TryHeal(amountToHeal, out bool isPickedUp);
-
-            if (isPickedUp)
+            if (player.TryHeal(amountToHeal))
             {
-                Destroy(gameObject);
+                PickedUp();
             }
         }
+    }
 
+    private void PickedUp()
+    {
+        Destroy(gameObject);
     }
 }

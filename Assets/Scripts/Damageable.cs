@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Damagable : MonoBehaviour
+public abstract class Damageable : MonoBehaviour
 {
     [SerializeField] protected int maxHP;
     protected bool isDead;
@@ -15,7 +15,6 @@ public abstract class Damagable : MonoBehaviour
 
     public bool IsDead => isDead;
     public bool IsAlive => !isDead;
-
 
     public int Hp
     {
@@ -36,13 +35,14 @@ public abstract class Damagable : MonoBehaviour
 
     public virtual void DealDamage(int damageAmount)
     {
-
+        Hp -= damageAmount;
     }
 
     protected virtual void Die()
     {
         Debug.Log($"{gameObject.name} is dead");
     }
+
     public virtual void Heal(int amount)
     {
 

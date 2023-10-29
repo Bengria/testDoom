@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private UIAim aim;
-    void Update()
+    private void Update()
     {
-        foreach (Shootable enemy in EnemyManager.Enimies)
+        foreach (Shootable enemy in EnemyManager.Enemies)
         {
             Vector3 enemyDirection = enemy.transform.position - transform.position;
             enemyDirection.y = 0;

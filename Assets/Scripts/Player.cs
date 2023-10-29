@@ -1,28 +1,18 @@
 using System;
 using UnityEngine;
 
-public class Player : Damagable
+public class Player : Damageable
 { 
-    public override void DealDamage(int damageAmount)
-    {
-        currentHp -= damageAmount;
-        if (currentHp <= 0 )
-        {
-            currentHp = 0;
-            Die();
-        }
-    }
-
-    public void TryHeal(int amountToHeal, out bool isPickedUp)
+    public bool TryHeal(int amountToHeal)
     {
         if (currentHp < maxHP)
         {
            currentHp += Mathf.Clamp(amountToHeal, 0, maxHP - currentHp);
-           isPickedUp = true;
+           return true;
         }
         else
         {
-            isPickedUp = false;
+            return false;
         }
     }
 }

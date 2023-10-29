@@ -4,7 +4,7 @@ public static class EnemyManager
 {
     static HashSet<Shootable> shootables = new HashSet<Shootable>();
 
-    public static IReadOnlyCollection<Shootable> Enimies => shootables;
+    public static IReadOnlyCollection<Shootable> Enemies => shootables;
 
     public static void RegisterEnemy(Shootable shootable)
     {

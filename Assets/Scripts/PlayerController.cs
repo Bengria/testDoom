@@ -5,7 +5,6 @@ public class PlayerController : BaseCharacterController
 {
     [SerializeField] private float sensitivity = 1;
 
-
     protected override void Awake()
     {
         base.Awake();

@@ -9,7 +9,6 @@ public abstract  class BaseCharacterController : MonoBehaviour
     [SerializeField] private float speed;
 
     private Vector3 surfaceNormal;
-
     private CharacterController characterController;
     private float verticalSpeed;
     private GameObject floor;
