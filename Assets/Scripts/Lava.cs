@@ -18,8 +18,6 @@ public class Lava : MonoBehaviour
             DealDamage();
             timer = 0;
         }
-
-        print($"Stay on Lava: {playerController.name}");
     }
 
     private void DealDamage()
@@ -30,12 +28,10 @@ public class Lava : MonoBehaviour
     private void OnCharacterEnter(PlayerController playerController)
     {
         player = playerController.GetComponent<Player>();
-        print("Enter Lava");
     }
 
     private void OnCharacterExit(PlayerController playerController)
     {
         timer = 0;
-        print("Exit Lava");
     }
 }
