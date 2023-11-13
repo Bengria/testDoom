@@ -8,6 +8,9 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        
+        Damageable damageable 
+            = EnemyManager.GetFirstVisibleTarget(transform, 3, Affiliation.Demon | Affiliation.Neutral, 30);
+
+        aim.CanShoot = damageable != null;
     }
 }

@@ -6,6 +6,9 @@ public abstract class Damageable : MonoBehaviour
 {
     [SerializeField] protected int maxHP;
     [SerializeField] protected Affiliation affiliation;
+
+    public Affiliation Affiliation => affiliation;
+
     protected bool isDead;
     protected int currentHp;
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class EnemyManager 
@@ -17,18 +18,26 @@ public static class EnemyManager
         damageable.Remove(_damageable);
     }
 
-    public static Damageable GetFirstVisibleTarget(Transform sourceTransform)
+    public static Damageable GetFirstVisibleTarget(
+        Transform sourceTransform, 
+        float viewConeAngle, 
+        Affiliation affiliation,
+        float maxDistance)
     { 
-        foreach (Damageable enemy in EnemyManager.Enemies)
+        foreach (Damageable enemy in 
+            EnemyManager.Enemies.Where(damageable => (damageable.Affiliation & affiliation) == affiliation))
         {
             Vector3 enemyDirection = enemy.transform.position - sourceTransform.position;
-            enemyDirection.y = 0;
 
+            if (enemyDirection.sqrMagnitude > maxDistance * maxDistance)
+                continue;
+
+            enemyDirection.y = 0;
             enemyDirection = enemyDirection.normalized;
 
             float angle = Mathf.Acos(Vector3.Dot(sourceTransform.forward, enemyDirection)) * Mathf.Rad2Deg;
 
-            if (angle < 3)
+            if (angle < viewConeAngle)
             {
                 CapsuleCollider enemyCollider = enemy.GetComponent<CapsuleCollider>();
 
