@@ -81,7 +81,7 @@ public class AIController : BaseCharacterController
     private void InvokeMoveToCompleted(MoveToCompletedReason reason)
     {
         isMoveToCompleted = true;
-
+        
         Action<MoveToCompletedReason> action = moveToComleted;
         moveToComleted = null;
         action?.Invoke(reason);

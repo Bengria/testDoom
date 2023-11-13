@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
+  affiliation: 2
 --- !u!136 &4287588767645448628
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -106,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1887c0a117ef56948853f02f48debc59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
 --- !u!1 &8574224809840078397
 GameObject:
   m_ObjectHideFlags: 0

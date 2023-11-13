@@ -199,7 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df4807ea618adb4eb693756bbd6a315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  maxHP: 100
+  affiliation: 1
 --- !u!143 &2651588613120421993
 CharacterController:
   m_ObjectHideFlags: 0
@@ -230,8 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f347ef53c0334281296d0adebde80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 500
   speed: 10
+  sensitivity: 500
 --- !u!114 &1060198616667484023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,3 +245,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c8235991a6c1d4aa1a208ea5ff1a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aim: {fileID: 0}

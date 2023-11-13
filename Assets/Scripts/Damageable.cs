@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Damageable : MonoBehaviour
 {
     [SerializeField] protected int maxHP;
+    [SerializeField] protected Affiliation affiliation;
     protected bool isDead;
     protected int currentHp;
 
