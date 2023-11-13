@@ -25,7 +25,7 @@ public static class EnemyManager
         float maxDistance)
     { 
         foreach (Damageable enemy in 
-            EnemyManager.Enemies.Where(damageable => (damageable.Affiliation & affiliation) == affiliation))
+            EnemyManager.Enemies.Where(damageable => (damageable.Affiliation & affiliation) > 0))
         {
             Vector3 enemyDirection = enemy.transform.position - sourceTransform.position;
 
