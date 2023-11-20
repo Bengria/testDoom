@@ -7,21 +7,32 @@ public class RoamingAIState : AIState
     public RoamingAIState(AIController aIController, AIStateMachine stateMachine) : base(stateMachine)
     {
         AIController = aIController;
+     
     }
 
     public override void Enable()
     {
         AIController.MoveTo(GetRandomPosInRadius(10), HandleMoveToCompleted);
+        AIController.Sense.TargetChanged += HandleTargetChanged;
     }
 
     public override void Disable()
     {
+        AIController.Sense.TargetChanged -= HandleTargetChanged;
+    }
 
+    void HandleTargetChanged( Damageable target)
+    {
+        if(target != null)
+        {
+            AIController.AbortMoveTo();
+            ChangeState("Chasing");
+        }
     }
 
     private void HandleMoveToCompleted(MoveToCompletedReason reason)
     {
-        if (reason == MoveToCompletedReason.Failure)
+        if (reason != MoveToCompletedReason.Success)
             return;
 
         ChangeState("Roaming");
