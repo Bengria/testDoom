@@ -9,13 +9,15 @@ public static class Coroutines
     }
 
     static CoroutinesRunner coroutinesRunner;
+
     public static void StartCoroutine(IEnumerator coroutine)
     {
-        if( coroutinesRunner == null)
+        if (coroutinesRunner == null)
             coroutinesRunner = new GameObject("corutines_runner").AddComponent<CoroutinesRunner>();
 
         coroutinesRunner.StartCoroutine(coroutine);
     }
+
     public static void StopCoroutine(IEnumerator coroutine)
     {
         if (coroutinesRunner == null)

@@ -1,10 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DemonAIController : AIController
 {
     private AIStateMachine stateMachine;
+
+    protected override void Update()
+    {
+        base.Update();
+        Debug.Log(stateMachine.ActiveState + " Name -- " + gameObject.name);
+    }
 
     private void Start()
     {

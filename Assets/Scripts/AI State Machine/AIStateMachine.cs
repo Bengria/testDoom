@@ -5,6 +5,7 @@ public class AIStateMachine : MonoBehaviour
 {
     private Dictionary<string, AIState> States { get; }
     private AIState activeState;
+    public AIState ActiveState => activeState;
 
     public AIStateMachine()
     {

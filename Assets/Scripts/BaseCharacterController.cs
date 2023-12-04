@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -39,10 +37,12 @@ public abstract  class BaseCharacterController : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, angle));
     }
+
     protected void SetRotation(float angle)
     {
         transform.rotation = Quaternion.Euler(new Vector3(0, angle));
     }
+
     protected void MoveLocal(float forward, float right)
     {
         if (characterController.isGrounded)
@@ -67,11 +67,13 @@ public abstract  class BaseCharacterController : MonoBehaviour
 
         GroundCheck();
     }
+
     protected void MoveWorld(float x, float z)
     {
         Vector3 ditection = transform.InverseTransformDirection(new Vector3(x, 0, z));
         MoveLocal(ditection.x, ditection.z);
     }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         surfaceNormal = hit.normal;

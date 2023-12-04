@@ -16,7 +16,7 @@ public class AIController : BaseCharacterController
     private int pathPointIndex;
 
     private NavMeshPath path;
-    AISense sense;
+    private AISense sense;
 
     public AISense Sense => sense;
 

@@ -9,11 +9,9 @@ public class Lava : MonoBehaviour
 
     private void OnCharacterStay(PlayerController playerController)
     {
-        float oneSecond = 1;
-
         timer += Time.deltaTime;
 
-        if (timer >= oneSecond)
+        if (timer >= 1)
         {
             DealDamage();
             timer = 0;

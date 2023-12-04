@@ -94,17 +94,4 @@ public class ElevatorTrigger : MonoBehaviour
 
         StartCoroutine(MoveElevator(endElevatorPosition));
     }
-
-    private bool FloatsIsEqual(float f1, float f2)
-    {
-        return Math.Abs(f1 - f2) < Mathf.Epsilon;
-    }
-    private bool VectorsEqualApproximately(Vector3 vectorOne, Vector3 vectorTwo)
-    {
-        if (Math.Abs(vectorOne.x - vectorTwo.x) > Mathf.Epsilon) return false;
-        if (Math.Abs(vectorOne.y - vectorTwo.y) > Mathf.Epsilon) return false;
-        if (Math.Abs(vectorOne.z - vectorTwo.z) > Mathf.Epsilon) return false;
-
-        return true;
-    }
 }

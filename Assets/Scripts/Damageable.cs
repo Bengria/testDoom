@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Damageable : MonoBehaviour
+public class Damageable : MonoBehaviour
 {
     [SerializeField] protected int maxHP;
     [SerializeField] protected Affiliation affiliation;
@@ -15,6 +15,16 @@ public abstract class Damageable : MonoBehaviour
     private void Start()
     {
         currentHp = maxHP;
+    }
+
+    private void OnEnable()
+    {
+        EnemyManager.RegisterEnemy(this);
+    }
+
+    private void OnDisable()
+    {
+        EnemyManager.UnregisterEnemy(this);
     }
 
     public bool IsDead => isDead;

@@ -1,24 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChasingAIState : AIState
 {
-    AIController AIController { get; }
+    private AIController AIController { get; }
     public ChasingAIState(AIController aiController, AIStateMachine stateMachine) : base(stateMachine)
     {
         AIController = aiController;
     }
-    IEnumerator chasingRoutine;
+
+    private IEnumerator chasingRoutine;
+
     public override void Enable()
     {
-
         Coroutines.StartCoroutine(chasingRoutine = ChasingRoutine());
     }
+
     public override void Disable()
     {
         Coroutines.StopCoroutine(chasingRoutine);
     }
+
     IEnumerator ChasingRoutine()
     {
         Vector3 targetPos = Vector3.zero;
