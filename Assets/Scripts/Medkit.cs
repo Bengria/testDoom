@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HealingComponent : MonoBehaviour
+public class Medkit : MonoBehaviour
 {
     [SerializeField] private int amountToHeal;
+    [SerializeField] private Affiliation healAffiliation;
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent(out Player player))
+        if (collider.TryGetComponent(out Damageable damageable) &&
+            (damageable.Affiliation & healAffiliation) > 0)
         {
-            if (player.TryHeal(amountToHeal))
+            if (damageable.TryHeal(amountToHeal))
             {
                 PickedUp();
             }

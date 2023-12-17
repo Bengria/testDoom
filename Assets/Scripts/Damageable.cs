@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour
@@ -57,8 +55,16 @@ public class Damageable : MonoBehaviour
         Debug.Log($"{gameObject.name} is dead");
     }
 
-    public virtual void Heal(int amount)
+    public virtual bool TryHeal(int amountToHeal)
     {
-
+        if (currentHp < maxHP)
+        {
+            currentHp += Mathf.Clamp(amountToHeal, 0, maxHP - currentHp);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

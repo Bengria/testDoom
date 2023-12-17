@@ -21,7 +21,7 @@ public class RoamingAIState : AIState
         AIController.Sense.TargetChanged -= HandleTargetChanged;
     }
 
-    void HandleTargetChanged( Damageable target)
+    private void HandleTargetChanged( Damageable target)
     {
         if(target != null)
         {

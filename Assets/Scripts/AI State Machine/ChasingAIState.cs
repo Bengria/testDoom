@@ -21,16 +21,16 @@ public class ChasingAIState : AIState
         Coroutines.StopCoroutine(chasingRoutine);
     }
 
-    IEnumerator ChasingRoutine()
+    private IEnumerator ChasingRoutine()
     {
         Vector3 targetPos = Vector3.zero;
         while (true)
         {
            if(AIController.Sense.Target != null)
-            {
+           {
                 targetPos = AIController.Sense.Target.transform.position;
                 AIController.MoveTo(targetPos);
-            }
+           }
            yield return null;
         }
     }

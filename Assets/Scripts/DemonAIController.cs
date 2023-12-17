@@ -7,7 +7,6 @@ public class DemonAIController : AIController
     protected override void Update()
     {
         base.Update();
-        Debug.Log(stateMachine.ActiveState + " Name -- " + gameObject.name);
     }
 
     private void Start()

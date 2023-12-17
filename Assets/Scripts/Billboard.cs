@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class Bilboard : MonoBehaviour
+public class Billboard : MonoBehaviour
 {
     private Transform cashedCamera;
+
     private void Start()
     {
         cashedCamera = Camera.main.transform;

@@ -5,7 +5,6 @@ public static class Coroutines
 {
     class CoroutinesRunner : MonoBehaviour
     {
-
     }
 
     static CoroutinesRunner coroutinesRunner;
